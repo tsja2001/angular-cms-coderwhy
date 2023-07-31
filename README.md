@@ -1,27 +1,49 @@
 # CmsAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+# 命令
 
-## Development server
+* `pnpm install` 安装依赖
+* `pnpm start` 启动
+* `pnpm build` 构建
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# 介绍
 
-## Code scaffolding
+1. API源于Coderwhy的Vue项目, [Vue项目地址](https://github.com/tsja2001/vue3_ts_coderwhy-).
+2. 边阅读Angular官方文档, 边开发此项目, 目的是接触到Angular尽可能的API与语法.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+3. 账号: `coderwhy` 密码: `123456`
 
-## Build
+# 功能
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. JWT认证 + 路由守卫
+2. 动态菜单赋权
+3. 高封装性的Request Service, Store Service
+4. Service形式调用全局组件(Alert、Message)
 
-## Running unit tests
+### 尝试将React与Vue的开发思维移植到Angular中, 并找到最佳实践:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+####  1. 请求封装 `src/app/request/request.service.ts`
 
-## Running end-to-end tests
+使用原生 `Http Service` 请求服务, 但对其进行封装. 实现以下功能:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* 将所有请求携带token
+* 统一处理返回异常
+* 解构返回数据, 只返回data
 
-## Further help
+#### 2. 针对业务模块封装Service `src/app/request/{module}.service.ts`
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+将请求封装到Srevise中, 并在Service缓存请求数据, 具有以下优势:
+
+* 页面需要请求时, 只需注入对应模块的Service, 无需手动引入Http模块或者URI常量.
+* Service挂在在根结点中, 数据请求后缓存在Service, 实现数据全局缓存. 即使组件销毁, 数据也有保留, 便于数据复用.
+
+#### 3. Service形式调用全局组件
+
+* 封装Alert、Message, 并挂到根组件上, 通过Service实现全局调用.
+
+#### 4. 配置路由守卫
+
+* 初次进入与跳转时, 验证token是否过期, 若过期则清除登录信息重定向到登陆页
+* 初次进入时, 若Storage中存在登录信息, Service中没有. 则将Storage中数据缓存到Service中
+* 根据角色动态路由注册(暂未开发)
+
