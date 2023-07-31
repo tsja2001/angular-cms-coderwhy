@@ -1,0 +1,13 @@
+<form class="" (ngSubmit)="submitHandler()" #queryForm="ngForm">
+  <label for="name">
+    <span>用户名</span>
+    <input type="text" name="name" id="name" value="" [(ngModel)]="formData.name" placeholder="请输入用户名" />
+  </label>
+  <label for="cellphone">
+    <span>手机号</span>
+    <input type="text" name="cellphone" id="cellphone" value="" [(ngModel)]="formData.cellphone" placeholder="请输入手机号" />
+  </label>
+  <button type="submit">提交</button>
+  <!-- 重置 -->
+  <button type="button" (click)="resetHandler()">重置</button>
+</form>

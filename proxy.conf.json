@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "http://123.207.32.32:5000",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}

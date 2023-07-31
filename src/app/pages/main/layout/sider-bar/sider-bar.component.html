@@ -1,0 +1,12 @@
+<div class="sider">
+  <div class="group" *ngFor="let group of roleMenu">
+    <div class="group-title">
+      {{group.name}}
+    </div>
+
+    <a [routerLink]="[item.url]" class="group-item" *ngFor="let item of group.children">
+      {{item.name}}
+    </a>
+
+  </div>
+</div>

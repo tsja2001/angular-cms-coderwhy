@@ -1,0 +1,12 @@
+<div class="modal-content" *ngIf="modalData">
+  <div class="title">{{modalData.title ?? '标题'}}</div>
+  <div class="content">{{modalData.content ?? '内容'}}</div>
+  <div class="btns">
+    <button class="btn cancel" (click)="cancelHandler()">
+      {{modalData.cancelText ?? '取消'}}
+    </button>
+    <button class="btn confirm" (click)="confirmHandler()">
+      {{modalData.confirmText ?? '确定'}}
+    </button>
+  </div>
+</div>

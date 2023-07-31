@@ -1,0 +1,25 @@
+// 定位在右上角的alert组件
+.content
+  position: absolute
+  top: 10px
+  right:  10px
+  z-index: 999
+  padding: 10px 20px
+  background-color: #fff
+  border: 1px solid #ccc
+  box-shadow: 0 0 10px #ccc
+  // 从屏幕右侧滑入，消失时向右侧滑出
+  animation: slideInRight 0.5s, slideOutRight 0.5s 2s
+  // 从屏幕右侧滑入，消失时向右侧滑出
+  @keyframes slideInRight
+    from
+      transform: translateX(100%)
+    to
+      transform: translateX(0)
+  @keyframes slideOutRight
+    from
+      transform: translateX(0)
+    to
+      transform: translateX(100%)
+
+

@@ -1,0 +1,26 @@
+<table class="table">
+  <thead class="thead">
+    <tr>
+      <th nzLeft="0px">序号</th>
+      <th>用户名</th>
+      <th>真实姓名</th>
+      <th>手机号</th>
+      <th>状态</th>
+      <th>创建时间</th>
+      <th>更新时间</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody class="tbody">
+    <tr *ngFor="let data of usersListData?.list">
+      <td nzLeft="0px">{{data.id}}</td>
+      <td>{{data.name}}</td>
+      <td>{{data.realname}}</td>
+      <td>{{data.cellphone}}</td>
+      <td>{{data.enable}}</td>
+      <td>{{data.createAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+      <td>{{data.updateAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+      <td>操作</td>
+    </tr>
+  </tbody>
+</table>
